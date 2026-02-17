@@ -1,0 +1,36 @@
+package net.yxh.yxhmod.block;
+
+
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraftforge.eventbus.api.bus.BusGroup;
+import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.RegistryObject;
+import net.yxh.yxhmod.Yxhsmod;
+import net.yxh.yxhmod.item.ModItems;
+
+import java.util.function.Supplier;
+
+public class ModBlocks {
+    public static final DeferredRegister<Block> BLOCKS=DeferredRegister.create(ForgeRegistries.BLOCKS, Yxhsmod.MOD_ID);
+    public static final RegistryObject<Block> TEST_BLOCK=registerBlock("testblock",()->new Block(BlockBehaviour.Properties.of().setId(BLOCKS.key("testblock")).strength(4f).requiresCorrectToolForDrops().sound(SoundType.BAMBOO)));
+    public static final RegistryObject<Block> FINISH_BLOCK=registerBlock("finishblock",()->new Block(BlockBehaviour.Properties.of().setId(BLOCKS.key("finishblock")).strength(4f).requiresCorrectToolForDrops().sound(SoundType.ANVIL)));
+    private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block)
+    {
+        RegistryObject<T> toReturn = BLOCKS.register(name,block);
+        registerBlockItem(name,toReturn);
+        return toReturn;
+    }
+    private static <T extends Block> void registerBlockItem(String name,RegistryObject<T> block){
+        ModItems.ITEMS.register(name,()->new BlockItem(block.get(),new Item.Properties().setId(ModItems.ITEMS.key(name))));
+    }
+    public static void register(BusGroup eventBus)
+    {
+
+        BLOCKS.register(eventBus);
+    }
+}

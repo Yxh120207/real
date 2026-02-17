@@ -23,6 +23,9 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+import net.yxh.yxhmod.block.ModBlocks;
+import net.yxh.yxhmod.item.ModCreativeTabs;
+import net.yxh.yxhmod.item.ModItems;
 import org.slf4j.Logger;
 
 // The value here should match an entry in the META-INF/mods.toml file
@@ -38,8 +41,10 @@ public final class Yxhsmod {
 
         // Register the commonSetup method for modloading
         FMLCommonSetupEvent.getBus(modBusGroup).addListener(this::commonSetup);
-
-        // Register the item to a creative tab
+        ModItems.register(modBusGroup);
+        ModBlocks.register(modBusGroup);
+        ModCreativeTabs.register(modBusGroup);
+        // Register the ModItems to a creative tab
         BuildCreativeModeTabContentsEvent.BUS.addListener(Yxhsmod::addCreative);
 
         // Register our mod's ForgeConfigSpec so that Forge can create and load the config file for us
@@ -51,9 +56,17 @@ public final class Yxhsmod {
 
     }
 
-    // Add the yxh block item to the building blocks tab
+    // Add the yxh block ModItems to the building blocks tab
     private static void addCreative(BuildCreativeModeTabContentsEvent event) {
-
+        if(event.getTabKey()==CreativeModeTabs.INGREDIENTS)
+        {
+            event.accept(ModItems.Reg_ITEM);
+            event.accept(ModItems.OK_ITEM);
+        }
+        if(event.getTabKey()==CreativeModeTabs.BUILDING_BLOCKS){
+            event.accept(ModBlocks.TEST_BLOCK);
+            event.accept(ModBlocks.FINISH_BLOCK);
+        }
     }
 
     // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
@@ -63,5 +76,6 @@ public final class Yxhsmod {
         public static void onClientSetup(FMLClientSetupEvent event) {
 
         }
+
     }
 }
