@@ -1,19 +1,15 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "misc",
+  "category": "building",
   "key": {
-    "A": {
-      "item": "yxhmods:regitem"
-
-    }
+    "R": { "item": "yxhmods:regitem" }
   },
   "pattern": [
-    "AAA",
-    "AAA",
-    "AAA"
+    "RRR",
+    "RRR",
+    "RRR"
   ],
-  "result":{
-    "count": 1,
+  "result": {
     "item": "yxhmods:testblock"
   }
 }

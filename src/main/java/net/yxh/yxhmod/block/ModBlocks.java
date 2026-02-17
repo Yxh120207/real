@@ -17,8 +17,8 @@ import java.util.function.Supplier;
 
 public class ModBlocks {
     public static final DeferredRegister<Block> BLOCKS=DeferredRegister.create(ForgeRegistries.BLOCKS, Yxhsmod.MOD_ID);
-    public static final RegistryObject<Block> TEST_BLOCK=registerBlock("testblock",()->new Block(BlockBehaviour.Properties.of().setId(BLOCKS.key("testblock")).strength(4f).requiresCorrectToolForDrops().sound(SoundType.BAMBOO)));
-    public static final RegistryObject<Block> FINISH_BLOCK=registerBlock("finishblock",()->new Block(BlockBehaviour.Properties.of().setId(BLOCKS.key("finishblock")).strength(4f).requiresCorrectToolForDrops().sound(SoundType.ANVIL)));
+    public static final RegistryObject<Block> TEST_BLOCK=registerBlock("testblock",()->new Block(BlockBehaviour.Properties.of().strength(4f).requiresCorrectToolForDrops().sound(SoundType.BAMBOO).setId(BLOCKS.key("testblock"))));
+    public static final RegistryObject<Block> FINISH_BLOCK=registerBlock("finishblock",()->new Block(BlockBehaviour.Properties.of().strength(4f).requiresCorrectToolForDrops().sound(SoundType.ANVIL).setId(BLOCKS.key("finishblock"))));
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block)
     {
         RegistryObject<T> toReturn = BLOCKS.register(name,block);
