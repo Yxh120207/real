@@ -3,11 +3,11 @@
   "category": "misc",
   "ingredients": [
     {
-      "item": "yxhmods:testblock"
+      "item": "yxhmods:block/testblock"
     }
   ],
   "result": {
     "count": 9,
-    "id": "yxhmods:testitem"
+    "id": "yxhmods:item/regitem"
   }
 }

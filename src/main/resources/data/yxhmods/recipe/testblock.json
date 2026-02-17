@@ -3,20 +3,17 @@
   "category": "misc",
   "key": {
     "A": {
-      "item": "yxhmods:testitem"
+      "item": "yxhmods:item/regitem"
 
-    },
-    "B": {
-      "item": "minecraft:book"
     }
   },
   "pattern": [
     "AAA",
-    "ABA",
+    "AAA",
     "AAA"
   ],
   "result":{
     "count": 1,
-    "id": "yxhmods:testblock"
+    "id": "yxhmods:block/testblock"
   }
 }
